@@ -11,7 +11,6 @@ export class LoginPageComponent implements OnInit {
   public isActive = true;
 
   constructor() {
-    this.isActive = true;
   }
 
   ngOnInit() {
@@ -39,7 +38,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onClickWechatLogin(): void {
-    this.isActive = !this.isActive;
+    this.isActive = false;
     window.location.assign(this.wechatRedirectPath);
   }
 

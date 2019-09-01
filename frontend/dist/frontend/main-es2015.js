@@ -233,7 +233,6 @@ __webpack_require__.r(__webpack_exports__);
 let LoginPageComponent = class LoginPageComponent {
     constructor() {
         this.isActive = true;
-        this.isActive = true;
     }
     ngOnInit() {
         this.wechatRedirectPath = this.initWechatRedirectPath();
@@ -256,7 +255,7 @@ let LoginPageComponent = class LoginPageComponent {
         return wechatPath;
     }
     onClickWechatLogin() {
-        this.isActive = !this.isActive;
+        this.isActive = false;
         window.location.assign(this.wechatRedirectPath);
     }
 };
@@ -310,7 +309,6 @@ let TabNavigatorComponent = class TabNavigatorComponent {
         this.items = Array(20)
             .fill(0)
             .map((_v, i) => i);
-        this.isActive = false;
     }
     ngOnInit() {
         this.route.queryParams.subscribe(params => {

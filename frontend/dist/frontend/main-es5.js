@@ -240,7 +240,6 @@ __webpack_require__.r(__webpack_exports__);
 var LoginPageComponent = /** @class */ (function () {
     function LoginPageComponent() {
         this.isActive = true;
-        this.isActive = true;
     }
     LoginPageComponent.prototype.ngOnInit = function () {
         this.wechatRedirectPath = this.initWechatRedirectPath();
@@ -263,7 +262,7 @@ var LoginPageComponent = /** @class */ (function () {
         return wechatPath;
     };
     LoginPageComponent.prototype.onClickWechatLogin = function () {
-        this.isActive = !this.isActive;
+        this.isActive = false;
         window.location.assign(this.wechatRedirectPath);
     };
     LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -318,7 +317,6 @@ var TabNavigatorComponent = /** @class */ (function () {
         this.items = Array(20)
             .fill(0)
             .map(function (_v, i) { return i; });
-        this.isActive = false;
     }
     TabNavigatorComponent.prototype.ngOnInit = function () {
         var _this = this;

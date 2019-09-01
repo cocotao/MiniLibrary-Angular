@@ -19,7 +19,6 @@ export class TabNavigatorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.isActive = false;
   }
 
   ngOnInit() {
