@@ -41,7 +41,7 @@ module.exports = "<!-- <div style=\"text-align:center; padding: 8px;\">\n<h1>\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n</div>\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>\n</div>\n\n\n  "
+module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div *ngIf=\"isActive\">\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n    </div>\n\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>\n    </div>\n\n</div>"
 
 /***/ }),
 

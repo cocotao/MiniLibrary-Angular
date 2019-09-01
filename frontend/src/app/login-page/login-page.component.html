@@ -2,19 +2,19 @@
     <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>
 </div> -->
 
-<div style="height: 100px">
+<div *ngIf="isActive">
+    <div style="height: 100px">
+
+    </div>
+    <div class="button-sp-area">
+        <button weui-button (click)=onClickWechatLogin()>微信登录</button>
+    </div>
+
+    <div style="height: 100px">
+
+    </div>
+    <div class="button-sp-area">
+        <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>
+    </div>
 
 </div>
-<div class="button-sp-area">
-    <button weui-button (click)=onClickWechatLogin()>微信登录</button>
-</div>
-
-<div style="height: 100px">
-
-</div>
-<div class="button-sp-area">
-    <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>
-</div>
-
-
-  
