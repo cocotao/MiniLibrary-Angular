@@ -41,7 +41,7 @@ module.exports = "<!-- <div style=\"text-align:center; padding: 8px;\">\n<h1>\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n"
+module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n</div>\n\n  "
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = "<p>portal-page works!</p>\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<weui-tabbar>\n    <weui-tab heading=\"微信\" [badge]=\"8\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <weui-infiniteloader (loadmore)=\"onLoadMore($event)\">\n        <article class=\"weui-article\">\n          <h1>微信</h1>\n          <div class=\"weui-cells__title\">List with 50 Max</div>\n          <div class=\"weui-cells\">\n            <a *ngFor=\"let i of items\" class=\"weui-cell weui-cell_access\" href=\"javascript:;\">\n              <div class=\"weui-cell__bd\">{{ i }}</div>\n              <div class=\"weui-cell__ft\"></div>\n            </a>\n          </div>\n        </article>\n      </weui-infiniteloader>\n    </weui-tab>\n    <weui-tab\n      heading=\"通讯录\"\n      [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\"\n      [activeIcon]=\"'<img src=./assets/images/momentloader.png>'\"\n      (select)=\"onSelect()\"\n    >\n      <article class=\"weui-article\">\n        <h1>通讯录</h1>\n        <p>Select Time: {{ time }}</p>\n      </article>\n    </weui-tab>\n    <weui-tab heading=\"发现\" [badge]=\"'dot'\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <article class=\"weui-article\">\n        <h1>发现</h1>\n      </article>\n    </weui-tab>\n    <weui-tab heading=\"我\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <article class=\"weui-article\">\n        <h1>我</h1>\n      </article>\n    </weui-tab>\n  </weui-tabbar>\n"
+module.exports = "<div *ngIf=\"isActive\">\n  <weui-tabbar>\n    <weui-tab heading=\"微信\" [badge]=\"8\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <weui-infiniteloader (loadmore)=\"onLoadMore($event)\">\n        <article class=\"weui-article\">\n          <h1>微信</h1>\n          <div class=\"weui-cells__title\">List with 50 Max</div>\n          <div class=\"weui-cells\">\n            <a *ngFor=\"let i of items\" class=\"weui-cell weui-cell_access\" href=\"javascript:;\">\n              <div class=\"weui-cell__bd\">{{ i }}</div>\n              <div class=\"weui-cell__ft\"></div>\n            </a>\n          </div>\n        </article>\n      </weui-infiniteloader>\n    </weui-tab>\n    <weui-tab heading=\"通讯录\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\"\n      [activeIcon]=\"'<img src=./assets/images/momentloader.png>'\" (select)=\"onSelect()\">\n      <article class=\"weui-article\">\n        <h1>通讯录</h1>\n        <p>Select Time: {{ time }}</p>\n      </article>\n    </weui-tab>\n    <weui-tab heading=\"发现\" [badge]=\"'dot'\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <article class=\"weui-article\">\n        <h1>发现</h1>\n      </article>\n    </weui-tab>\n    <weui-tab heading=\"我\" [icon]=\"'<img src=./assets/images/icon_tabbar.png>'\">\n      <article class=\"weui-article\">\n        <h1>我</h1>\n      </article>\n    </weui-tab>\n  </weui-tabbar>\n</div>"
 
 /***/ }),
 
@@ -245,9 +245,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPageComponent = class LoginPageComponent {
-    constructor() { }
+    constructor() {
+        this.isActive = true;
+    }
     ngOnInit() {
         this.wechatRedirectPath = this.initWechatRedirectPath();
+        this.isActive = true;
+        // TODO
+        // if (redirect from tab-navigator) {
+        //   this.isActive = true;
+        // }
     }
     initWechatRedirectPath() {
         const redirectPage = 'wechatAuthorization';
@@ -261,6 +268,10 @@ let LoginPageComponent = class LoginPageComponent {
             + '&scope=' + scope
             + '&state=STATE&connect_redirect=1#wechat_redirect';
         return wechatPath;
+    }
+    onClickWechatLogin() {
+        this.isActive = !this.isActive;
+        window.location.assign(this.wechatRedirectPath);
     }
 };
 LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -351,8 +362,16 @@ let TabNavigatorComponent = class TabNavigatorComponent {
         this.items = Array(20)
             .fill(0)
             .map((_v, i) => i);
+        this.isActive = false;
     }
     ngOnInit() {
+        this.isActive = true;
+        // TODO
+        // if (code) {
+        //   this.isActive = true;
+        // } else {
+        //   Router(login-page);
+        // }
     }
     onSelect() {
         this.time = new Date().getTime();

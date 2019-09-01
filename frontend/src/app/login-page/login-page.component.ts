@@ -10,11 +10,18 @@ export class LoginPageComponent implements OnInit {
   wechatRedirectPath: string;
   isActive: boolean;
 
-  constructor() { }
+  constructor() {
+    this.isActive = true;
+  }
 
   ngOnInit() {
     this.wechatRedirectPath = this.initWechatRedirectPath();
     this.isActive = true;
+
+    // TODO
+    // if (redirect from tab-navigator) {
+    //   this.isActive = true;
+    // }
   }
 
   initWechatRedirectPath(): string {
@@ -30,6 +37,11 @@ export class LoginPageComponent implements OnInit {
       + '&state=STATE&connect_redirect=1#wechat_redirect';
 
     return wechatPath;
+  }
+
+  onClickWechatLogin(): void {
+    this.isActive = !this.isActive;
+    window.location.assign(this.wechatRedirectPath);
   }
 
 }

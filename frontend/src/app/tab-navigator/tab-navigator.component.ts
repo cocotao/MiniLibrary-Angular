@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { InfiniteLoaderComponent } from 'ngx-weui/infiniteloader';
 import { timer } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 
@@ -12,9 +13,19 @@ import { timer } from 'rxjs';
 })
 export class TabNavigatorComponent implements OnInit {
 
-  constructor() { }
+  private isActive;
+  constructor() {
+    this.isActive = false;
+  }
 
   ngOnInit() {
+    this.isActive = true;
+    // TODO
+    // if (code) {
+    //   this.isActive = true;
+    // } else {
+    //   Router(login-page);
+    // }
   }
 
   time: number;
