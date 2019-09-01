@@ -9,13 +9,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class WechatAuthorizationComponent implements OnInit {
 
   constructor(
-    private activeRouter: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
     ) {
   }
 
   ngOnInit() {
-    this.activeRouter.queryParams.subscribe( params => {
+    this.route.queryParams.subscribe( params => {
       // this.queryParams = params;
       const searchParamStr = window.location.search;
       const n = searchParamStr.indexOf('?code=') + 6;
@@ -23,6 +23,7 @@ export class WechatAuthorizationComponent implements OnInit {
       const code = searchParamStr.substr(n, m - 6);
 
       if (code.length > 0) {
+        window.localStorage.setItem('code', code);
         this.router.navigate(['/tabNavigator'], { queryParams: { code } });
       }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -10,10 +11,16 @@ export class LoginPageComponent implements OnInit {
   private wechatRedirectPath: string;
   public isActive = true;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
+    if (window.localStorage.getItem('code') && window.localStorage.getItem('code').length > 0) {
+      this.isActive = false;
+    }
     this.wechatRedirectPath = this.initWechatRedirectPath();
   }
 
@@ -40,6 +47,10 @@ export class LoginPageComponent implements OnInit {
   onClickWechatLogin(): void {
     this.isActive = false;
     window.location.assign(this.wechatRedirectPath);
+  }
+
+  onClickMockWechatLogin(): void {
+    this.router.navigate(['/wechatAuthorization'], { queryParams: { code: '123456789', state: 'STATE' } });
   }
 
 }

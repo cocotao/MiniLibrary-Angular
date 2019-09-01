@@ -41,7 +41,7 @@ module.exports = "<!-- <div style=\"text-align:center; padding: 8px;\">\n<h1>\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n</div>\n\n  "
+module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n</div>\n\n<div style=\"height: 100px\">\n\n</div>\n<div class=\"button-sp-area\">\n    <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>\n</div>\n\n\n  "
 
 /***/ }),
 
@@ -228,13 +228,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageComponent", function() { return LoginPageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 let LoginPageComponent = class LoginPageComponent {
-    constructor() {
+    constructor(route, router) {
+        this.route = route;
+        this.router = router;
         this.isActive = true;
     }
     ngOnInit() {
+        if (window.localStorage.getItem('code') && window.localStorage.getItem('code').length > 0) {
+            this.isActive = false;
+        }
         this.wechatRedirectPath = this.initWechatRedirectPath();
     }
     // TODO get router parm from tab-navigator
@@ -258,14 +265,22 @@ let LoginPageComponent = class LoginPageComponent {
         this.isActive = false;
         window.location.assign(this.wechatRedirectPath);
     }
+    onClickMockWechatLogin() {
+        this.router.navigate(['/wechatAuthorization'], { queryParams: { code: '123456789', state: 'STATE' } });
+    }
 };
+LoginPageComponent.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+];
 LoginPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-login-page',
         template: __webpack_require__(/*! raw-loader!./login-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/login-page/login-page.component.html"),
         styles: [__webpack_require__(/*! ./login-page.component.less */ "./src/app/login-page/login-page.component.less")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
 ], LoginPageComponent);
 
 
@@ -381,18 +396,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let WechatAuthorizationComponent = class WechatAuthorizationComponent {
-    constructor(activeRouter, router) {
-        this.activeRouter = activeRouter;
+    constructor(route, router) {
+        this.route = route;
         this.router = router;
     }
     ngOnInit() {
-        this.activeRouter.queryParams.subscribe(params => {
+        this.route.queryParams.subscribe(params => {
             // this.queryParams = params;
             const searchParamStr = window.location.search;
             const n = searchParamStr.indexOf('?code=') + 6;
             const m = searchParamStr.indexOf('&state=STATE');
             const code = searchParamStr.substr(n, m - 6);
             if (code.length > 0) {
+                window.localStorage.setItem('code', code);
                 this.router.navigate(['/tabNavigator'], { queryParams: { code } });
             }
         });
