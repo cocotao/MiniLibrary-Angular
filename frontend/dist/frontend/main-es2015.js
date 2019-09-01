@@ -93,7 +93,7 @@ const routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_4__["LoginPageComponent"] },
     { path: 'wechatAuthorization', component: _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_3__["WechatAuthorizationComponent"] },
-    { path: 'tabNavigator/:code', component: _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_5__["TabNavigatorComponent"] }
+    { path: 'tabNavigator', component: _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_5__["TabNavigatorComponent"] }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

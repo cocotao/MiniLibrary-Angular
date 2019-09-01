@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'wechatAuthorization', component: WechatAuthorizationComponent },
-  { path: 'tabNavigator/:code', component: TabNavigatorComponent }
+  { path: 'tabNavigator', component: TabNavigatorComponent }
 ];
 
 @NgModule({
