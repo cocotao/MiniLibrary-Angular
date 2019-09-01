@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { InfiniteLoaderComponent } from 'ngx-weui/infiniteloader';
 import { timer } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 
 
@@ -13,20 +14,29 @@ import { Router } from '@angular/router';
 })
 export class TabNavigatorComponent implements OnInit {
 
-  private isActive;
-  constructor() {
+  public isActive = false;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.isActive = false;
   }
 
   ngOnInit() {
-    this.isActive = true;
-    // TODO
+    this.route.queryParams.subscribe( params => {
+      console.log('[coco test]: code:' + params.code as string);
+      if (params.code) {
+        this.isActive = true;
+      }
+    });
+  }
+
+  // TODO get from router parm
     // if (code) {
     //   this.isActive = true;
     // } else {
     //   Router(login-page);
     // }
-  }
 
   time: number;
   onSelect() {

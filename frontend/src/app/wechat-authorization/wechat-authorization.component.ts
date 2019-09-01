@@ -21,10 +21,9 @@ export class WechatAuthorizationComponent implements OnInit {
       const n = searchParamStr.indexOf('?code=') + 6;
       const m = searchParamStr.indexOf('&state=STATE');
       const code = searchParamStr.substr(n, m - 6);
-      console.log('[coco test]: code:' + code as string);
 
       if (code.length > 0) {
-        this.router.navigate(['/tabNavigator']);
+        this.router.navigate(['/tabNavigator'], { queryParams: { code } });
       }
 
     });

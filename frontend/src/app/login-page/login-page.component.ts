@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  wechatRedirectPath: string;
-  isActive: boolean;
+  private wechatRedirectPath: string;
+  public isActive = true;
 
   constructor() {
     this.isActive = true;
@@ -16,13 +16,12 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.wechatRedirectPath = this.initWechatRedirectPath();
-    this.isActive = true;
-
-    // TODO
-    // if (redirect from tab-navigator) {
-    //   this.isActive = true;
-    // }
   }
+
+  // TODO get router parm from tab-navigator
+  // if (redirect from tab-navigator) {
+  //   this.isActive = true;
+  // }
 
   initWechatRedirectPath(): string {
     const redirectPage = 'wechatAuthorization';

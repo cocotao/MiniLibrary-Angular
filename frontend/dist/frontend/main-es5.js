@@ -45,17 +45,6 @@ module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPat
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/portal-page/portal-page.component.html":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/portal-page/portal-page.component.html ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>portal-page works!</p>\n"
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/index.js!./src/app/tab-navigator/tab-navigator.component.html":
 /*!**************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/tab-navigator/tab-navigator.component.html ***!
@@ -104,7 +93,7 @@ var routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_4__["LoginPageComponent"] },
     { path: 'wechatAuthorization', component: _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_3__["WechatAuthorizationComponent"] },
-    { path: 'tabNavigator', component: _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_5__["TabNavigatorComponent"] }
+    { path: 'tabNavigator/:code', component: _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_5__["TabNavigatorComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -182,11 +171,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var ngx_weui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-weui */ "./node_modules/ngx-weui/fesm5/ngx-weui.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _portal_page_portal_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./portal-page/portal-page.component */ "./src/app/portal-page/portal-page.component.ts");
-/* harmony import */ var _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./tab-navigator/tab-navigator.component */ "./src/app/tab-navigator/tab-navigator.component.ts");
-/* harmony import */ var _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login-page/login-page.component */ "./src/app/login-page/login-page.component.ts");
-/* harmony import */ var _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./wechat-authorization/wechat-authorization.component */ "./src/app/wechat-authorization/wechat-authorization.component.ts");
-
+/* harmony import */ var _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tab-navigator/tab-navigator.component */ "./src/app/tab-navigator/tab-navigator.component.ts");
+/* harmony import */ var _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login-page/login-page.component */ "./src/app/login-page/login-page.component.ts");
+/* harmony import */ var _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./wechat-authorization/wechat-authorization.component */ "./src/app/wechat-authorization/wechat-authorization.component.ts");
 
 
 
@@ -204,10 +191,9 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _portal_page_portal_page_component__WEBPACK_IMPORTED_MODULE_7__["PortalPageComponent"],
-                _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_8__["TabNavigatorComponent"],
-                _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_9__["LoginPageComponent"],
-                _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_10__["WechatAuthorizationComponent"]
+                _tab_navigator_tab_navigator_component__WEBPACK_IMPORTED_MODULE_7__["TabNavigatorComponent"],
+                _login_page_login_page_component__WEBPACK_IMPORTED_MODULE_8__["LoginPageComponent"],
+                _wechat_authorization_wechat_authorization_component__WEBPACK_IMPORTED_MODULE_9__["WechatAuthorizationComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -254,15 +240,15 @@ __webpack_require__.r(__webpack_exports__);
 var LoginPageComponent = /** @class */ (function () {
     function LoginPageComponent() {
         this.isActive = true;
+        this.isActive = true;
     }
     LoginPageComponent.prototype.ngOnInit = function () {
         this.wechatRedirectPath = this.initWechatRedirectPath();
-        this.isActive = true;
-        // TODO
-        // if (redirect from tab-navigator) {
-        //   this.isActive = true;
-        // }
     };
+    // TODO get router parm from tab-navigator
+    // if (redirect from tab-navigator) {
+    //   this.isActive = true;
+    // }
     LoginPageComponent.prototype.initWechatRedirectPath = function () {
         var redirectPage = 'wechatAuthorization';
         var returnUri = 'http://www.ltvision123.com/' + redirectPage;
@@ -295,51 +281,6 @@ var LoginPageComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/portal-page/portal-page.component.less":
-/*!********************************************************!*\
-  !*** ./src/app/portal-page/portal-page.component.less ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BvcnRhbC1wYWdlL3BvcnRhbC1wYWdlLmNvbXBvbmVudC5sZXNzIn0= */"
-
-/***/ }),
-
-/***/ "./src/app/portal-page/portal-page.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/portal-page/portal-page.component.ts ***!
-  \******************************************************/
-/*! exports provided: PortalPageComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalPageComponent", function() { return PortalPageComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var PortalPageComponent = /** @class */ (function () {
-    function PortalPageComponent() {
-    }
-    PortalPageComponent.prototype.ngOnInit = function () {
-    };
-    PortalPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-portal-page',
-            template: __webpack_require__(/*! raw-loader!./portal-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/portal-page/portal-page.component.html"),
-            styles: [__webpack_require__(/*! ./portal-page.component.less */ "./src/app/portal-page/portal-page.component.less")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], PortalPageComponent);
-    return PortalPageComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/tab-navigator/tab-navigator.component.scss":
 /*!************************************************************!*\
   !*** ./src/app/tab-navigator/tab-navigator.component.scss ***!
@@ -364,24 +305,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 var TabNavigatorComponent = /** @class */ (function () {
-    function TabNavigatorComponent() {
+    function TabNavigatorComponent(route, router) {
+        this.route = route;
+        this.router = router;
+        this.isActive = false;
         this.items = Array(20)
             .fill(0)
             .map(function (_v, i) { return i; });
         this.isActive = false;
     }
     TabNavigatorComponent.prototype.ngOnInit = function () {
-        this.isActive = true;
-        // TODO
-        // if (code) {
-        //   this.isActive = true;
-        // } else {
-        //   Router(login-page);
-        // }
+        var _this = this;
+        this.route.queryParams.subscribe(function (params) {
+            console.log('[coco test]: code:' + params.code);
+            if (params.code) {
+                _this.isActive = true;
+            }
+        });
     };
     TabNavigatorComponent.prototype.onSelect = function () {
         this.time = new Date().getTime();
@@ -400,6 +346,10 @@ var TabNavigatorComponent = /** @class */ (function () {
             comp.resolveLoading();
         });
     };
+    TabNavigatorComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+    ]; };
     TabNavigatorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'tab-navigator',
@@ -407,7 +357,8 @@ var TabNavigatorComponent = /** @class */ (function () {
             encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
             styles: [__webpack_require__(/*! ./tab-navigator.component.scss */ "./src/app/tab-navigator/tab-navigator.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], TabNavigatorComponent);
     return TabNavigatorComponent;
 }());
@@ -456,9 +407,8 @@ var WechatAuthorizationComponent = /** @class */ (function () {
             var n = searchParamStr.indexOf('?code=') + 6;
             var m = searchParamStr.indexOf('&state=STATE');
             var code = searchParamStr.substr(n, m - 6);
-            console.log('[coco test]: code:' + code);
             if (code.length > 0) {
-                _this.router.navigate(['/tabNavigator']);
+                _this.router.navigate(['/tabNavigator'], { queryParams: { code: code } });
             }
         });
     };
