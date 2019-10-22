@@ -41,7 +41,7 @@ module.exports = "<!-- <div style=\"text-align:center; padding: 8px;\">\n<h1>\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div *ngIf=\"isActive\">\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickWechatLogin()>微信登录</button>\n    </div>\n\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>\n    </div>\n\n</div>"
+module.exports = "<!-- <div *ngIf=\"isActive\">\n    <a href={{wechatRedirectPath}}>直接跳转到微信提供的网页</a>\n</div> -->\n\n<div *ngIf=\"isActive\">\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickWechatLogin()>微信222登录</button>\n    </div>\n\n    <div style=\"height: 100px\">\n\n    </div>\n    <div class=\"button-sp-area\">\n        <button weui-button (click)=onClickMockWechatLogin()>模拟微信登录</button>\n    </div>\n\n    <div style=\"height: 100px\">\n    </div>\n\n    <div class=\"weui-footer\">\n        <p class=\"weui-footer__links\">\n            <a href=\"http://www.miitbeian.gov.cn\" class=\"weui-footer__link\">蜀ICP备19018673号</a>\n        </p>\n        <p class=\"weui-footer__text\">\n            <a href=\"http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=30155945581142279\"> 蜀ICP备19018673号-1 </a>\n        </p>\n    </div>\n\n</div>"
 
 /***/ }),
 
